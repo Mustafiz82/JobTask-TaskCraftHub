@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { AuthContext } from "../../../Context/AuthProvider";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const DeleteToDo = () => {
 
@@ -16,6 +17,14 @@ const DeleteToDo = () => {
 			console.log(data);
 		});
 	}, [user]);
+
+    
+    if(taskdata.length == 0){
+        return <div className="h-screen text-center flex-col justify-center flex items-center">
+            <h1 className="text-xl">no task found</h1>
+            <Link to="/Dashboard/CreateTask" className="btn ">Create a new task</Link>
+        </div>
+    }
 
     
 	const handleDelete = (id) => {

@@ -12,6 +12,8 @@ import Dashboard from "../Pages/Dashboard/DashboardHome/Dashboard";
 import CreateTask from "../Pages/Dashboard/CreateTask/CreateTask";
 import DeleteToDo from "../Pages/Dashboard/DeleteToDo/DeleteToDo";
 import ToDo from "../Pages/Dashboard/ToDo/ToDo";
+import Pricing from "../Pages/Pricing/Pricing";
+import About from "../Pages/About/About";
 
 
 
@@ -24,6 +26,14 @@ import ToDo from "../Pages/Dashboard/ToDo/ToDo";
         {
           path: "/",
           element: <Home></Home>
+        },
+        {
+          path: "/Pricing",
+          element: <Pricing></Pricing>
+        },
+        {
+          path: "/About",
+          element: <About></About>
         },
       ],
     },

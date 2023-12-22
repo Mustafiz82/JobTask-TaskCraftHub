@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { AuthContext } from "../../../Context/AuthProvider";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const CreateTask = () => {
     const {user} = useContext(AuthContext)
 
@@ -37,7 +38,10 @@ const CreateTask = () => {
         axiosPublic.post("/tasks" , task) 
         .then(data => {
             console.log(data.data);
+            toast("Task Created Successfully");
         })
+
+        
 
 
 
@@ -89,7 +93,7 @@ const CreateTask = () => {
 				<button type="submit" className="block btn btn-primary">
 					Create Task
 				</button>
-			</form>
+			</form>  <ToastContainer />
 		</div>
 	);
 };

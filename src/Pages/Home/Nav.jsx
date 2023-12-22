@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import logo from "../../assets/logo.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Nav = () => {
@@ -12,20 +12,8 @@ const Nav = () => {
 
 	const ul = (
 		<>
-			{/* <NavLink
-				to="/"
-				className={({ isActive, isPending }) =>
-					isPending
-						? "pending"
-						: isActive
-						? "text-purple-600 font-bold"
-						: "font-bold text-black"
-				}
-			>
-				Home
-			</NavLink>
 			<NavLink
-				to="/membership"
+				to="/"
 				className={({ isActive, isPending }) =>
 					isPending
 						? "pending"
@@ -34,8 +22,44 @@ const Nav = () => {
 						: " text-black"
 				}
 			>
-				Membership
-			</NavLink> */}
+				Home
+			</NavLink>
+			<NavLink
+				to="/Dashboard/DashboardHome"
+				className={({ isActive, isPending }) =>
+					isPending
+						? "pending"
+						: isActive
+						? "text-purple-600 font-bold"
+						: " text-black"
+				}
+			>
+				DashBoard
+			</NavLink>
+			<NavLink
+				to="/Pricing"
+				className={({ isActive, isPending }) =>
+					isPending
+						? "pending"
+						: isActive
+						? "text-purple-600 font-bold"
+						: " text-black"
+				}
+			>
+				Pricing
+			</NavLink>
+			<NavLink
+				to="/About"
+				className={({ isActive, isPending }) =>
+					isPending
+						? "pending"
+						: isActive
+						? "text-purple-600 font-bold"
+						: " text-black"
+				}
+			>
+				About
+			</NavLink>
 		</>
 	);
 
@@ -64,7 +88,7 @@ const Nav = () => {
 							tabIndex={0}
 							className="menu space-y-4 menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
 						>
-							{ul}
+							{user?.email ? ul : null}
 						</ul>
 					</div>
 					<div className="btn p-0 flex gap-2  btn-ghost text-xl">
@@ -73,7 +97,7 @@ const Nav = () => {
 					</div>
 				</div>
 				<div className="navbar-center hidden lg:flex">
-					<ul className="flex gap-5 px-1">{ul}</ul>
+					<ul className="flex gap-5 px-1">{user?.email ? ul : null}</ul>
 				</div>
 				<div className="navbar-end">
 					<div className=""></div>
@@ -117,14 +141,7 @@ const Nav = () => {
 										{user?.displayName}
 									</p>
 								</li>
-								<li className="">
-                                <Link
-											className="text-xl my-4 btn"
-											to="/Dashboard/DashboardHome"
-										>
-											Dashboard
-										</Link>
-								</li>
+								
 								<li> 
 									<button
 										onClick={() => {
